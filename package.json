@@ -1,0 +1,16 @@
+{
+  "name": "wikistack_VR-WS",
+  "version": "1.0.0",
+  "description": "wikistack repo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "rivermanvr",
+  "license": "ISC",
+  "dependencies": {
+    "morgan": "^1.8.2"
+  }
+}
