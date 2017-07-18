@@ -11,7 +11,6 @@ app.engine('html', nunjucks.render);
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
+app.use('/stylesheets', express.static(path.join(__dirname, 'css')));
 
 module.exports = app;
