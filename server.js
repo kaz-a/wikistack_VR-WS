@@ -5,6 +5,8 @@ const db = require( './db' );
 
 const port = process.env.PORT || 3000;
 
-//seed here.....
+db.seed()
+  .then(() => console.log('seeding done'))
+  .catch(err => console.log(err));
 
 server.listen(port, () => console.log(`listening on port ${port}`));
