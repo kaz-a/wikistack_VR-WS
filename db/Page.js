@@ -11,8 +11,11 @@ const defineAttr = {
     type: db.Sequelize.TEXT
   },
   status: {
-    type: db.Sequelize.BOOLEAN
+    type: db.Sequelize.STRING
   }
+  // status: {
+  //   type: db.Sequelize.ENUM({ values: ['open', 'closed'] })
+  // }
 };
 
 const defineOptions = {};
