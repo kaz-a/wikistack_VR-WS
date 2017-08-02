@@ -2,10 +2,18 @@ const db = require( './db' );
 
 const defineAttr = {
   name: {
-    type: db.Sequelize.STRING
+    type: db.Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   email: {
-    type: db.Sequelize.STRING
+    type: db.Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   }
 };
 
