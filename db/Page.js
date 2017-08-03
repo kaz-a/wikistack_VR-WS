@@ -9,7 +9,7 @@ const defineAttr = {
     type: db.Sequelize.STRING,
     allowNull: false,
     get() {
-      return '/wiki' + this.getDataValue('urlTitle');
+      return '/wiki/' + this.getDataValue('urlTitle');
     }
   },
   content: {
@@ -18,10 +18,6 @@ const defineAttr = {
   },
   status: {
     type: db.Sequelize.STRING
-  },
-  date: {
-    type: db.Sequelize.DATE,
-    defaultValue: Date
   }
   // status: {
   //   type: db.Sequelize.ENUM({ values: ['open', 'closed'] })
@@ -32,6 +28,18 @@ const defineAttr = {
 };
 
 const defineOptions = {
+  hooks: {
+    beforeValidate: (page) => {
+      if (page.title) {
+        // Removes all non-alphanumeric characters from title
+        // And make whitespace underscore
+        page.urlTitle = page.title.replace(/\s+/g, '_').replace(/\W/g, '');
+      } else {
+        // Generates random 5 letter string
+        page.urlTitle = Math.random().toString(36).substring(2, 7);
+      }
+    }
+  }
 };
 
 const Page = db.define('page', defineAttr, defineOptions);
