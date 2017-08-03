@@ -18,7 +18,7 @@ const defineAttr = {
   },
   date: {
     type: db.Sequelize.DATE,
-    // defaultValue: Date
+    defaultValue: Date
   }
   // status: {
   //   type: db.Sequelize.ENUM({ values: ['open', 'closed'] })
