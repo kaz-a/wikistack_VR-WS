@@ -8,9 +8,9 @@ const defineAttr = {
   urlTitle: {
     type: db.Sequelize.STRING,
     allowNull: false,
-    get() {
-      return '/wiki/' + this.getDataValue('urlTitle');
-    }
+    // get() {
+    //   return '/wiki/' + this.getDataValue('urlTitle');
+    // }
   },
   content: {
     type: db.Sequelize.TEXT,
