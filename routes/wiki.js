@@ -5,7 +5,10 @@ const User = db.models.User;
 const Page = db.models.Page
 
 router.get('/', function(req, res, next) {
-  res.send('got to GET /wiki/');
+  Page.findAll()
+    .then(records => {
+      res.send(records);
+    })
 });
 
 router.get('/add', function(req, res, next) {
@@ -13,13 +16,16 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  // Page.build({
-  //   title: req.body.title,
-  //   content: req.body.content,
-  //   status: req.body.status,
-  //   urlTitle: req.url
-  // })
-  res.redirect('/wiki');
+  const page = Page.build({
+    title: req.body.title,
+    content: req.body.content,
+    status: req.body.status,
+    urlTitle: req.url
+  })
+  page.save()
+  .then(() => {
+    res.redirect('/wiki');
+  })
 });
 
 module.exports = router

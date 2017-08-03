@@ -7,7 +7,10 @@ const defineAttr = {
   },
   urlTitle: {
     type: db.Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    get() {
+      return '/wiki' + this.getDataValue('urlTitle');
+    }
   },
   content: {
     type: db.Sequelize.TEXT,
@@ -29,9 +32,6 @@ const defineAttr = {
 };
 
 const defineOptions = {
-  getterMethods: {
-
-  }
 };
 
 const Page = db.define('page', defineAttr, defineOptions);
